@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Talk } from '../model/talk';
+import { TalkDataService } from '../services/talk-data.service';
 
 @Component({
   selector: 'app-talk-info',
@@ -11,13 +12,12 @@ export class TalkInfoComponent implements OnInit {
   @Input() 
   talkData: Talk;
   
-  constructor() { }
+  constructor(private talkDataService: TalkDataService) { }
 
   ngOnInit() {
   }
 
   voteUp(){
-    this.talkData.votesUp++;
+    this.talkData = this.talkDataService.voteUp(this.talkData);
   }
-
 }

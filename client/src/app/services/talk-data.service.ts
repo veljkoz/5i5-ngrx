@@ -6,6 +6,7 @@ import { Talk } from '../model/talk';
 })
 export class TalkDataService {
 
+
   constructor() { }
 
   private mock(title, scheduled, dateDue, description, votesUp): Talk{
@@ -32,5 +33,10 @@ export class TalkDataService {
       this.mock("Third prepared", new Date("2018/05/11 16:30:00"),true, "description of third", 4), 
       this.mock("Fourth prepared", new Date("2018/06/03 16:30:00"),true, "description of fourth", 5)
     ]
+  }
+
+  public voteUp(talk: Talk): Talk {
+    talk.votesUp++;
+    return talk;
   }
 }
