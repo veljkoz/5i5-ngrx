@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Talk } from '../model/talk';
 import { TalkDataService } from '../services/talk-data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,13 @@ import { TalkDataService } from '../services/talk-data.service';
 })
 export class HomeComponent implements OnInit {
 
-  scheduledTalks: Array<Talk>;
-  preparationTalks: Array<Talk>;
+  scheduledTalks$: Observable<Array<Talk>>;
+  preparationTalks$: Observable<Array<Talk>>;
 
   constructor(private talkDataService: TalkDataService) { }
 
   ngOnInit() {
-    this.scheduledTalks = this.talkDataService.getScheduledTalks();
-    this.preparationTalks = this.talkDataService.getPreparedTalks();
+    this.scheduledTalks$ = this.talkDataService.getScheduledTalks();
+    this.preparationTalks$ = this.talkDataService.getPreparedTalks();
   }
 }
