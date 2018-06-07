@@ -1,0 +1,86 @@
+.talkBox {
+    position: relative;
+    border-color: darkslategray;
+    border-radius: 5px;
+    border: 1px;
+    padding: .7rem;
+    box-shadow: 0 1rem 3rem rgba(#000, .1);
+    display: flex;
+    border: solid 1px #000000;
+    margin-top: 5px;
+    &__votesUp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-sizing: content-box;
+        color: green;
+        padding: .3rem 1rem;
+    }
+    &__datetime {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 1rem;
+        align-content: space-between;
+        justify-content: space-evenly;
+    }
+    &__datepart {
+        font-weight: bold;
+    }
+    &__talkDetails {
+        margin-left: 1rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+        display: inline-block;
+        border-bottom: 2px solid lightblue;
+        color: rgb(25, 25, 114);
+    }
+
+    &__talkControls {
+        //position: absolute;
+        margin-left: auto;
+        right: .2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .top { 
+            top: .2rem;
+        }
+
+        .bottom {
+            bottom: .2rem;
+        }
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+    background-color: transparent;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.no-selection {
+    /* for safari & chrome browsers */
+    -webkit-user-select: none;
+    /* for mozilla browsers */
+    -moz-user-select: none;
+    /* for konqueror browsers */
+    -khtml-user-select: none;
+    /* for IE10+ */
+    -ms-user-select: none;
+}
