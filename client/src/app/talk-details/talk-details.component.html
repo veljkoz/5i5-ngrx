@@ -1,3 +1,13 @@
-<p>
-  talk-details works!
-</p>
+<h2>{{talkData.title}}</h2>
+
+<hr>
+<div *ngIf="talkData.scheduled">
+  Talk is scheduled for: {{talkData.dateTimeDue}}
+</div>
+
+<section class="description">
+  <p>Description:</p>
+  <div class="description__text">
+    {{talkData.description}}
+  </div>
+</section>

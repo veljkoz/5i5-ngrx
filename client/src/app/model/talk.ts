@@ -1,7 +1,7 @@
 import { QAndA } from "./q-and-a";
 
 export interface Talk { 
-    //id: string;
+    id: number;
     title: string;
     scheduled: boolean;
     description: string;
