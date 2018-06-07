@@ -4,6 +4,9 @@
 <div *ngIf="talkData.scheduled">
   Talk is scheduled for: {{talkData.dateTimeDue}}
 </div>
+<div *ngIf="!talkData.scheduled">
+    <i> - Talk is not yet scheduled - </i>
+  </div>
 
 <section class="description">
   <p>Description:</p>
