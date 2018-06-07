@@ -7,17 +7,21 @@ import { FormsModule } from '@angular/forms';
 import { TalkListComponent } from './talk-list/talk-list.component';
 import { TalkInfoComponent } from './talk-info/talk-info.component';
 import { TalkDataService } from './services/talk-data.service';
+import { AppRoutingModule } from './/app-routing.module';
+import { TalkDetailsComponent } from './talk-details/talk-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TalkListComponent,
-    TalkInfoComponent
+    TalkInfoComponent,
+    TalkDetailsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [TalkDataService],
   bootstrap: [AppComponent]
