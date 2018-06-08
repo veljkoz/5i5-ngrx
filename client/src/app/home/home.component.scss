@@ -1,0 +1,20 @@
+.filter{
+    margin:1rem;
+
+    
+    &__label {
+        font-weight: bold;
+        padding: .3rem;
+    }
+
+    &__searchbox {
+        border: none;
+        border-bottom: 1px solid brown;
+        background-color: #f9fafa;
+        font-size: 1.4rem;
+    }
+
+    &__searchbox:focus{
+        outline: none;
+    }
+}
