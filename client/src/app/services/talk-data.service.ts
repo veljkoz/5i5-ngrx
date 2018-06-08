@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class TalkDataService {
 
+
   private allTalks: Array<Talk> = [
     this.mock(1, "First scheduled", true, new Date("2018/03/11 16:30:00"), "description of first", 3),
     this.mock(2, "Second scheduled", true, new Date("2018/05/17 16:30:00"), "description of second", 4),
@@ -43,6 +44,10 @@ export class TalkDataService {
 
   public voteUp(talk: Talk): Observable<Talk> {
     talk.votesUp++;
+    return of(talk);
+  }
+
+  updateTalk(talk: Talk): Observable<Talk> {
     return of(talk);
   }
 }

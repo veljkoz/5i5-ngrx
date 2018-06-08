@@ -2,10 +2,12 @@
 
 <hr>
 <div *ngIf="talkData.scheduled">
-  Talk is scheduled for: {{talkData.dateTimeDue}}
-</div>
+  Talk is scheduled for: {{talkData.dateTimeDue}}<br>
+    <button (click)="moveToPreparation()">Move to preparation</button>
+  </div>
 <div *ngIf="!talkData.scheduled">
-    <i> - Talk is not yet scheduled - </i>
+    <i> - Talk is not yet scheduled - </i><br>
+    <button (click)="moveToScheduled()">Move to scheduled</button>
   </div>
 
 <section class="description">

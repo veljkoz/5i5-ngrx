@@ -20,4 +20,17 @@ export class TalkDetailsComponent implements OnInit {
     this.talkDataService.getTalkDetails(id).subscribe(data => this.talkData = data);
   }
 
+  public moveToScheduled(){
+    this.talkData.scheduled = true;
+    this.updateTalk();
+  }
+
+  public moveToPreparation(){
+    this.talkData.scheduled = false;
+    this.updateTalk();
+  }
+
+  private updateTalk(){
+    this.talkDataService.updateTalk(this.talkData).subscribe(data => this.talkData = data);
+  }
 }
