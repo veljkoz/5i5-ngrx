@@ -4,7 +4,6 @@ import { TalkDataService } from '../services/talk-data.service';
 import { BehaviorSubject } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/map';
 
 
 @Component({
