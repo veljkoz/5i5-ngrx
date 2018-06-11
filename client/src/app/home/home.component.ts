@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   constructor(private talkDataService: TalkDataService) { }
 
   ngOnInit() {
+    this.filter = '';
     this.schedTalks$ = new BehaviorSubject([]);
     this.prepTalks$ = new BehaviorSubject([]);
 
