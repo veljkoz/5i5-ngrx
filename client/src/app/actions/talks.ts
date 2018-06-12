@@ -19,7 +19,7 @@ export class DoGetAllTalks implements Action {
 export class DoApplyFilter implements Action {
     readonly type = TalkActionTypes.APPLY_FILTER;
 
-    constructor(public payload: { filter: string }) { }
+    constructor(public payload: {filter: string}) { }
 }
 
 export class OnTalksFetched implements Action {
@@ -30,9 +30,7 @@ export class OnTalksFetched implements Action {
 
 export class OnTalkFetchError implements Action{
     readonly type = TalkEventTypes.TALKS_FETCH_ERROR;
-
 }
-
 
 export type TalkActionsUnion =
     DoApplyFilter

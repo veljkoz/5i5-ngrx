@@ -12,7 +12,7 @@ import { TalkDetailsComponent } from './talk-details/talk-details.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './reducers';
+import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { TalkEffects } from './effects/talks';
 
@@ -33,7 +33,7 @@ import { TalkEffects } from './effects/talks';
     MatInputModule,
     AppRoutingModule,
 
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([TalkEffects])
   ],
   providers: [TalkDataService],
