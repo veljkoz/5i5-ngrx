@@ -34,12 +34,8 @@ export class TalkDataService {
     return of(this.allTalks.find(elem => elem.id === id));
   }
 
-  public getScheduledTalks(): Observable<Array<Talk>> {
-    return of(this.allTalks.filter(elem => elem.scheduled));
-  }
-
-  public getPreparedTalks(): Observable<Array<Talk>> {
-    return of(this.allTalks.filter(elem => !elem.scheduled));
+  public getAllTalks(): Observable<Array<Talk>> {
+    return of(this.allTalks);
   }
 
   public voteUp(talk: Talk): Observable<Talk> {

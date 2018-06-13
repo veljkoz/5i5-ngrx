@@ -31,14 +31,12 @@ export class HomeComponent implements OnInit {
     this.schedTalks$ = new BehaviorSubject([]);
     this.prepTalks$ = new BehaviorSubject([]);
 
-    this.talkDataService.getScheduledTalks().subscribe(data => {
-      this.scheduledTalks = data;
-      this.schedTalks$.next(this.filterIt(data));
-    });
-
-    this.talkDataService.getPreparedTalks().subscribe(data => {
-      this.preparationTalks = data;
-      this.prepTalks$.next(this.filterIt(data));
+    this.talkDataService.getAllTalks().subscribe(data => {
+      data = this.filterIt(data);
+      this.scheduledTalks = data.filter(elem => elem.scheduled);
+      this.preparationTalks = data.filter(elem => !elem.scheduled);
+      this.schedTalks$.next(this.scheduledTalks);
+      this.prepTalks$.next(this.preparationTalks);
     });
 
     this.formGroup.valueChanges.debounceTime(500).subscribe((value) => {
