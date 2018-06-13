@@ -1,6 +1,6 @@
 import { Talk } from "../model/talk";
 import { TalkActionsUnion, TalkActionTypes, TalkEventTypes } from '../actions/talks';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { EntityState, EntityAdapter, createEntityAdapter, Update } from '@ngrx/entity';
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { filter } from "rxjs/operators";
 
@@ -32,7 +32,12 @@ export function reducer(state: TalksState = initState, action: TalkActionsUnion)
         }
         //EVENTS that come with data (i.e. "document type of actions")
         case TalkEventTypes.TALKS_FETCHED: {
-            return adapter.addAll(action.payload, { ...state });
+            return adapter.addAll(action.payload, state);
+        }
+
+        case TalkEventTypes.TALK_VOTE_CHANGED: {
+            let upd: Update<Talk> = { id: action.payload.id, changes: action.payload };
+            return adapter.updateOne(upd, state);
         }
 
         default: {

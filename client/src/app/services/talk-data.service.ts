@@ -9,6 +9,7 @@ export class TalkDataService {
 
 
   private allTalks: Array<Talk> = [
+    this.mock(0, "Mine", true, new Date("2018/03/11 16:30:00"), "description of mine", 2),
     this.mock(1, "First scheduled", true, new Date("2018/03/11 16:30:00"), "description of first", 3),
     this.mock(2, "Second scheduled", true, new Date("2018/05/17 16:30:00"), "description of second", 4),
     this.mock(3, "First prepared", false, new Date("2018/04/12 16:30:00"), "description of first", 1),
@@ -38,9 +39,9 @@ export class TalkDataService {
     return of(this.allTalks);
   }
 
-  public voteUp(talk: Talk): Observable<Talk> {
-    talk.votesUp++;
-    return of(talk);
+  public voteUp(talkId: number): Observable<Talk> {
+    this.allTalks[talkId].votesUp++;
+    return of(this.allTalks[talkId]);
   }
 
   updateTalk(talk: Talk): Observable<Talk> {

@@ -38,6 +38,6 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production
-    ? [logger,localStorageSyncReducer]
-    : [localStorageSyncReducer];
+    ? [logger]
+    : [];
 

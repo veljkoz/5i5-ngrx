@@ -2,6 +2,9 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Talk } from '../model/talk';
 import { TalkDataService } from '../services/talk-data.service';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { TalksState } from '../reducers/talks';
+import { DoVoteUp } from '../actions/talks';
 
 
 @Component({
@@ -9,26 +12,16 @@ import { Subscription } from 'rxjs';
   templateUrl: './talk-info.component.html',
   styleUrls: ['./talk-info.component.scss']
 })
-export class TalkInfoComponent implements OnInit, OnDestroy {
-  @Input() 
+export class TalkInfoComponent implements OnInit {
+  @Input()
   talkData: Talk;
-
-
-  private voteUp$: Subscription;
   
-  constructor(private talkDataService: TalkDataService) { }
-  ngOnDestroy(): void {
-    if (this.voteUp$){
-      this.voteUp$.unsubscribe();
-    }
-  }
+  constructor(private store: Store<TalksState>) { }
 
   ngOnInit() {
   }
 
-  voteUp(){
-    this.talkDataService.voteUp(this.talkData).subscribe(o => {
-      this.talkData = o;
-    });
+  voteUp() {
+    this.store.dispatch(new DoVoteUp({ talkId: this.talkData.id }));
   }
 }
