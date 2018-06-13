@@ -4,9 +4,10 @@ import { TalkDataService } from '../services/talk-data.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
-import { TalksState, selectPrepared, selectScheduled } from '../reducers/talks';
+import { TalksState, selectPrepared, selectScheduled, selectFilter } from '../reducers/talks';
 import { Store, select } from '@ngrx/store';
 import { DoApplyFilter } from '../actions/talks';
+import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -29,6 +30,10 @@ export class HomeComponent implements OnInit {
 
     this.schedTalks$ = this.store.pipe(select(selectScheduled));
     this.prepTalks$ = this.store.pipe(select(selectPrepared));
+
+    this.store.pipe(select(selectFilter), take(1)).subscribe(filter => {
+      this.formGroup.setValue({ filter: filter});
+    });
 
     this.formGroup.valueChanges.debounceTime(500).subscribe((value) => {
       this.store.dispatch(new DoApplyFilter({ filter: value.filter }));
